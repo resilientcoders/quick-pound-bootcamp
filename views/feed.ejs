@@ -7,9 +7,13 @@
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
+            <div>
+              <ul>
+              </ul>
+            </div>
           </li>
-        <% } %>
-        </ul>
+          <% } %>
+      </ul>
     </div>
-  </div>  
-<%- include('partials/footer') -%>
+  </div>
+  <%- include('partials/footer') -%>

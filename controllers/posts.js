@@ -1,11 +1,15 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const Comment = require("../models/comment");
 
 module.exports = {
   getProfile: async (req, res) => {
+    // console.log(req, 'prof')
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const post = await Post.find({ user: req.user.id });
+      //we're inside the controller, here on line 7 the controller is using the model
+      //its saying only find the post with the id that is equal to the logged in user's id
+      res.render("profile.ejs", { post: post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -19,9 +23,11 @@ module.exports = {
     }
   },
   getPost: async (req, res) => {
+    console.log(req, 'req')
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const comment = await Comment.find({postid: req.params.id});
+      res.render("post.ejs", { post: post, user: req.user, comment: comment});
     } catch (err) {
       console.log(err);
     }
