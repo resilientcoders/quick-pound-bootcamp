@@ -25,17 +25,17 @@
         </p>
       </div>
       <div>
+        <div>
+          <h3 class="col-3 comments">Comments</h3>
+          <ul>
+            <% for (let x=0; x<comment.length; x++) { %>
+              <li>
+                <%= comment[x].comment %>
+              </li>
+             <%}%>
+          </ul>
+        </div>
         <form action="/comment/createComment/<%=post._id%>/" method="POST">
-          <div>
-            <h3 class="col-3 comments">Comments</h3>
-            <ul>
-              <% for (let x=0; x<comment.length; x++) { %>
-                <li>
-                  <%= comment[i].comment %>
-                </li>
-                }%>
-            </ul>
-          </div>
           <input type="text" placeholder="Enter Comment Here" name="comment"></input>
           <button type="submit">Submit</button>
         </form>

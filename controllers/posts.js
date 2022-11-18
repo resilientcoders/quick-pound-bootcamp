@@ -4,7 +4,6 @@ const Comment = require("../models/comment");
 
 module.exports = {
   getProfile: async (req, res) => {
-    // console.log(req, 'prof')
     try {
       const post = await Post.find({ user: req.user.id });
       //we're inside the controller, here on line 7 the controller is using the model
@@ -23,7 +22,6 @@ module.exports = {
     }
   },
   getPost: async (req, res) => {
-    console.log(req, 'req')
     try {
       const post = await Post.findById(req.params.id);
       const comment = await Comment.find({postid: req.params.id});
